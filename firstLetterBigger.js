@@ -1,4 +1,4 @@
-function firstLetterBigger() {
+function initFirstParagraphLetter() {
     firstParagraphElement = $('.content p:first');
     firstParagraphText = firstParagraphElement.text();
     letter = firstParagraphText.substr(0, 1);
@@ -6,10 +6,9 @@ function firstLetterBigger() {
     firstParagraphText = '<div class="firstLetter">' + letter + '</div>' + firstParagraphText;
     firstParagraphElement.html(firstParagraphText);
 }
-
+ 
 /*
 css
- 
 
 div#post p .firstLetter {
     font-size: 40px;
