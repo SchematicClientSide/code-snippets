@@ -7,9 +7,8 @@
 	
 	// Returns the tallest height of a collection of elements
 	$.fn.tallest = function (outer, margins) {  
-	    var fn = outer ? "height" : "outerHeight";  
 	    return Math.max.apply(Math, $.map(this, function() {  
-	        return $(this)[fn](margins);  
+	        return outer ? $(this).outerHeight(margins) : $(this).height();  
 	    }));
 	};  
 
@@ -17,26 +16,24 @@
 	$.fn.widest = function (outer, margins) {  
 	    var fn = outer ? "width" : "outerWidth";  
 	    return Math.max.apply(Math, $.map(this, function() {  
-	        return $(this)[fn](margins);  
+	        return outer ? $(this).outerWidth(margins) : $(this).width();   
 	    }));
 	};
 	
 	// Returns the total width of a collection of elements
 	$.fn.totalWidth = function (outer, margins) {
-		var fn = outer ? "width" : "outerWidth",
-			w = 0;
+		var w = 0;
 		$.each(this, function () {
-			w += $(this)[fn](margins);
+			w += outer ? $(this).outerWidth(margins) : $(this).width();
 		});
 		return w;
 	};
 	
 	// Returns the total height of a collection of elements
 	$.fn.totalHeight = function (outer, margins) {
-		var fn = outer ? "height" : "outerHeight",
-			h = 0;
+		var h = 0;
 		$.each(this, function () {
-			h += $(this)[fn](margins);
+			h += outer ? $(this).outerHeight(margins) : $(this).height();
 		});
 		return h;
 	};
